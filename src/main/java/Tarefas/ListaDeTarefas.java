@@ -71,7 +71,7 @@ public class ListaDeTarefas {
         }
 
 
-    static void exibirMenu() {
+   public static void exibirMenu() {
 
         System.out.println("\n### Aplicativo de Lista de Tarefas ###");
         System.out.println("1. Adicionar Tarefa");
