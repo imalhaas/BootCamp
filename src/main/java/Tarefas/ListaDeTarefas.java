@@ -6,10 +6,12 @@ import java.util.Scanner;
 
 public class ListaDeTarefas {
         private ArrayList<Tarefas> tarefas;
-
         public ListaDeTarefas() {
             this.tarefas = new ArrayList<>();
         }
+
+
+
 
     public static void adicionarTarefa(Scanner scanner, ListaDeTarefas listaDeTarefas) {
         System.out.print("Digite a descrição da tarefa: ");
@@ -18,29 +20,54 @@ public class ListaDeTarefas {
         System.out.print("Digite a data da tarefa: ");
         String data = scanner.nextLine();
 
-        Tarefas tarefaNova = new Tarefas(descricao, data);
-        listaDeTarefas.adicionarTarefa(tarefaNova);
+        System.out.println("Essa tarefa ja foi adicionada antes? ");
+        System.out.print("Deseja adicionar Tarefa? (S/N): ");
 
+        Scanner ler = new Scanner(System.in);
+        String resposta = scanner.nextLine();
+
+       switch (resposta) {
+           case "S":
+           Tarefas tarefaNova = new Tarefas(descricao, data);
+           listaDeTarefas.adicionarTarefa(tarefaNova);
+           break;
+           case "N":
+               break;
+       }
     }
-
     private void adicionarTarefa(Tarefas tarefa) {
-            tarefas.add(tarefa);
-        System.out.println("Tarefa adcionada com sucesso");
+                tarefas.add(tarefa);
+                System.out.println("Tarefa adcionada com sucesso");
     }
+
+
+
 
     public void removerTarefa(Tarefas tarefa){
             tarefas.remove(tarefa);
-        System.out.println("Tarefa removida com Sucesso");
     }
-
     public static void removerTarefa(Scanner scanner, ListaDeTarefas listaDeTarefas) {
         System.out.print("Digite a descrição da tarefa que deseja remover: ");
         String descricao = scanner.nextLine();
 
+        System.out.println("Você está prestes a excluir a terefa selecionada...");
+        System.out.print("Deseja continuar? (S/N): ");
+
+        // Obtém a resposta do usuário
+        Scanner ler = new Scanner(System.in);
+        String resposta = scanner.nextLine();
+
+        // Verifica se o usuário deseja continuar
+        if (resposta.equalsIgnoreCase("S")) {
+            // Lógica para excluir a tarefa (substitua com sua lógica real)
+            System.out.println("Tarefa removida com sucesso!");
+        } else {
+            System.out.println("Exclusão cancelada.");
+        }
         Tarefas tarefaRemovida = new Tarefas(descricao, "");
         listaDeTarefas.removerTarefa(tarefaRemovida);
-
     }
+
         public void listarTarefas() {
             if (tarefas.isEmpty()) {
                 System.out.println("Lista de tarefas vazia.");
@@ -72,7 +99,6 @@ public class ListaDeTarefas {
 
 
    public static void exibirMenu() {
-
         System.out.println("\n### Aplicativo de Lista de Tarefas ###");
         System.out.println("1. Adicionar Tarefa");
         System.out.println("2. Remover Tarefa");

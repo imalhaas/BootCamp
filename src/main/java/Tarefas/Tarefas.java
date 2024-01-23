@@ -1,6 +1,6 @@
 package Tarefas;
 
-class Tarefas implements Comparable<Tarefas> {
+public class Tarefas implements Comparable<Tarefas> {
     private String descricao;
     private String data;
 
