@@ -21,6 +21,28 @@ class Calculadora {
         }
     }
 
+    private double potenciar(double base, double expoente) {
+        return Math.pow(base, expoente);
+    }
+
+    private double raizQuadrada(double a) {
+        if (a >= 0) {
+            return Math.sqrt(a);
+        } else {
+            throw new ArithmeticException("Não é possível calcular a raiz quadrada de um número negativo.");
+        }
+    }
+
+    private int calcularFatorial(int n) {
+        if (n < 0) {
+            throw new IllegalArgumentException("Não é possível calcular o fatorial de um número negativo.");
+        } else if (n == 0 || n == 1) {
+            return 1;
+        } else {
+            return n * calcularFatorial(n - 1);
+        }
+    }
+
     public double calcular(double a, double b, char operacao) {
         switch (operacao) {
             case '+':
@@ -34,5 +56,9 @@ class Calculadora {
             default:
                 throw new IllegalArgumentException("Operação inválida.");
         }
-    }
-}
+     }
+   }
+
+
+
+
